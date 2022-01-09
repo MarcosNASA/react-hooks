@@ -7,7 +7,7 @@ function Name({name, onNameChange}) {
   return (
     <div>
       <label htmlFor="name">Name: </label>
-      <input id="name" value={name} onChange={onNameChange} />
+      <input id="name" value={name} onChange={event => onNameChange(event.target.value)} />
     </div>
   )
 }
@@ -16,7 +16,7 @@ function FavoriteAnimal({animal, onAnimalChange}) {
   return (
     <div>
       <label htmlFor="animal">Favorite Animal: </label>
-      <input id="animal" value={animal} onChange={onAnimalChange} />
+      <input id="animal" value={animal} onChange={event => onAnimalChange(event.target.value)} />
     </div>
   )
 }
@@ -30,10 +30,10 @@ function App() {
   const [name, setName] = React.useState('')
   return (
     <form>
-      <Name name={name} onNameChange={event => setName(event.target.value)} />
+      <Name name={name} onNameChange={name => setName(name)} />
       <FavoriteAnimal
         animal={animal}
-        onAnimalChange={event => setAnimal(event.target.value)}
+        onAnimalChange={animal => setAnimal(animal)}
       />
       <Display name={name} animal={animal} />
     </form>

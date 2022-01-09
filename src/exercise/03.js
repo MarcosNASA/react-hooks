@@ -7,7 +7,7 @@ function Name({name, onNameChange}) {
   return (
     <div>
       <label htmlFor="name">Name: </label>
-      <input id="name" value={name} onChange={onNameChange} />
+      <input id="name" value={name} onChange={event => setName(event.target.value)} />
     </div>
   )
 }
@@ -43,7 +43,7 @@ function App() {
   const [name, setName] = React.useState('')
   return (
     <form>
-      <Name name={name} onNameChange={event => setName(event.target.value)} />
+      <Name name={name} onNameChange={name => setName(name)} />
       {/* 🐨 pass the animal and onAnimalChange prop here (similar to the Name component above) */}
       <FavoriteAnimal />
       {/* 🐨 pass the animal prop here */}
